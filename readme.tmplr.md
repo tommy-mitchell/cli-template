@@ -5,14 +5,14 @@
 ## Install
 
 ```sh
-{{ tmplr.install_node }} {{ tmplr.project_name }}
+{{ tmplr.install_node }}
 ```
 
 <details>
 <summary>Other Package Managers</summary>
 
 ```sh
-{{ tmplr.install_yarn }} {{ tmplr.project_name }}
+{{ tmplr.install_yarn }}
 ```
 </details>
 
@@ -21,10 +21,10 @@
 ## Usage
 
 ```sh
-$ {{ listr.command_name }}
+$ {{ tmplr.command_name }}
 
   Usage
-    $ {{ listr.command_name }}
+    $ {{ tmplr.command_name }}
 
   Options
 

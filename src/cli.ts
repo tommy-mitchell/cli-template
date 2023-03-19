@@ -3,7 +3,7 @@ import meow from "meow";
 
 const cli = meow(`
 	Usage
-	  $ {{ listr.command_name }}
+	  $ {{ tmplr.command_name }}
 
 	Options
 
