@@ -1,0 +1,10 @@
+{
+	"extends": "@tommy-mitchell/tsconfig",
+	"exclude": [
+		"node_modules",
+		"dist",
+	],
+	"compilerOptions": {
+		"outDir": "dist",
+	},
+}

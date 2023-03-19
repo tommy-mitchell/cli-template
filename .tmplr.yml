@@ -1,0 +1,76 @@
+steps:
+  # remove template files
+
+  - remove: package.json
+  - remove: readme.md
+
+  # get project info
+
+  - read: project_name
+    prompt: 'Enter project name:'
+    default:
+      from: path.rootdir
+
+  - read: project_description
+    prompt: 'Enter project description:'
+
+  - read: command_name
+    prompt: 'Enter command name:'
+    default:
+      eval: '{{ project_name | trim: -cli }}'
+
+  - read: install_type
+    prompt: 'Enter installation type:'
+    choices:
+      - 'dev'
+      - 'global'
+      - 'dep'
+
+  # get computed variables
+  # https://github.com/loreanvictor/tmplr/issues/3#issuecomment-1322637026
+
+  - if:
+      eval: '{{ install_type | skip: dev }}' # not 'dev'
+    steps:
+      - if:
+          eval: '{{ install_type | skip: global }}' # not 'global'
+
+        # 'dep'
+        steps:
+          - read: install_node
+            eval: 'node install {{ project_name }}'
+          - read: install_yarn
+            eval: 'yarn add {{ project_name }}'
+
+        # 'global'
+        else:
+          steps:
+            - read: install_node
+              eval: 'node install --global {{ project_name }}'
+            - read: install_yarn
+              eval: 'yarn global add {{ project_name }}'
+
+    # 'dev'
+    else:
+      steps:
+        - read: install_node
+          eval: 'node install --save-dev {{ project_name }}'
+        - read: install_yarn
+          eval: 'yarn add -D {{ project_name }}'
+
+  # setup project
+
+  - update: src/cli.ts
+  - update: test/test.ts
+
+  - copy: package.tmplr.json
+    to: package.json
+
+  - copy: readme.tmplr.md
+    to: readme.md
+
+  # finish
+
+  - remove: .tmplr.yml
+  - remove: package.tmplr.json
+  - remove: readme.tmplr.md

@@ -1,0 +1,87 @@
+{
+	"name": "{{ tmplr.project_name }}",
+	"version": "0.0.0",
+	"description": "{{ tmplr.project_description }}",
+	"keywords": [
+		"cli",
+		"cli-app",
+		"command line"
+	],
+	"license": "MIT",
+	"repository": "tommy-mitchell/{{ tmplr.project_name }}",
+	"author": {
+		"name": "Tommy Mitchell",
+		"url": "https://tommymitchell.io"
+	},
+	"type": "module",
+	"bin": {
+		"{{ tmplr.command_name }}": "dist/cli.js"
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"test": "listr xo tsd 'c8 ava'"
+	},
+	"dependencies": {
+		"meow": "^11.0.0"
+	},
+	"devDependencies": {
+		"@tommy-mitchell/tsconfig": "^0.1.0",
+		"ava": "^5.2.0",
+		"c8": "^7.13.0",
+		"execa": "^7.1.1",
+		"get-bin-path": "^8.0.0",
+		"listr-cli": "^0.2.0",
+		"tsd": "^0.28.0",
+		"tsx": "^3.12.5",
+		"typescript": "~5.0.2",
+		"xo": "^0.53.1"
+	},
+	"engines": {
+		"node": ">=14.8.0"
+	},
+	"ava": {
+		"files": [
+			"test/*.ts"
+		],
+		"extensions": {
+			"ts": "module"
+		},
+		"nodeArguments": [
+			"--loader=tsx"
+		]
+	},
+	"xo": {
+		"rules": {
+			"quotes": [
+				"error",
+				"double"
+			],
+			"object-shorthand": [
+				"error",
+				"always",
+				{
+					"avoidExplicitReturnArrows": false
+				}
+			],
+			"keyword-spacing": [
+				"error",
+				{
+					"overrides": {
+						"if": {
+							"after": false
+						},
+						"for": {
+							"after": false
+						},
+						"while": {
+							"after": false
+						}
+					}
+				}
+			],
+			"arrow-parens": "off"
+		}
+	}
+}
