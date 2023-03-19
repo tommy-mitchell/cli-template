@@ -21,6 +21,7 @@
 		"dist"
 	],
 	"scripts": {
+		"build": "tsc",
 		"test": "listr xo tsd 'c8 ava'"
 	},
 	"dependencies": {
