@@ -6,6 +6,7 @@ Personal [`tmplr`](https://github.com/loreanvictor/tmplr) template for creating 
 
 ```sh
 npx tmplr tommy-mitchell/cli-template
+yarn install
 ```
 
 Run inside of desired installation directory.
