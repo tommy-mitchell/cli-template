@@ -17,7 +17,7 @@ steps:
   - read: command_name
     prompt: 'Enter command name:'
     default:
-      eval: '{{ project_name | trim: -cli }}'
+      eval: '{{ project_name | skip: @tommy-mitchell/ | trim: -cli }}'
 
   - read: install_type
     prompt: 'Enter installation type:'
@@ -27,36 +27,30 @@ steps:
       - 'dep'
 
   # get computed variables
-  # https://github.com/loreanvictor/tmplr/issues/3#issuecomment-1322637026
 
   - if:
-      eval: '{{ install_type | skip: dev }}' # not 'dev'
+      eval: '{{ install_type | matches: dev }}'
     steps:
-      - if:
-          eval: '{{ install_type | skip: global }}' # not 'global'
+      - read: install_node
+        eval: 'node install --save-dev {{ project_name }}'
+      - read: install_yarn
+        eval: 'yarn add --dev {{ project_name }}'
 
-        # 'dep'
-        steps:
-          - read: install_node
-            eval: 'node install {{ project_name }}'
-          - read: install_yarn
-            eval: 'yarn add {{ project_name }}'
+  - if:
+      eval: '{{ install_type | matches: global }}'
+    steps:
+      - read: install_node
+        eval: 'node install --global {{ project_name }}'
+      - read: install_yarn
+        eval: 'yarn global add {{ project_name }}'
 
-        # 'global'
-        else:
-          steps:
-            - read: install_node
-              eval: 'node install --global {{ project_name }}'
-            - read: install_yarn
-              eval: 'yarn global add {{ project_name }}'
-
-    # 'dev'
-    else:
-      steps:
-        - read: install_node
-          eval: 'node install --save-dev {{ project_name }}'
-        - read: install_yarn
-          eval: 'yarn add -D {{ project_name }}'
+  - if:
+      eval: '{{ install_type | matches: dep }}'
+    steps:
+      - read: install_node
+        eval: 'node install {{ project_name }}'
+      - read: install_yarn
+        eval: 'yarn add {{ project_name }}'
 
   # setup project
 
