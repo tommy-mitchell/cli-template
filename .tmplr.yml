@@ -17,7 +17,7 @@ steps:
   - read: command_name
     prompt: 'Enter command name:'
     default:
-      eval: '{{ project_name | trim: -cli }}'
+      eval: '{{ project_name | skip: @tommy-mitchell/ | trim: -cli }}'
 
   - read: install_type
     prompt: 'Enter installation type:'
