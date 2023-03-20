@@ -8,8 +8,6 @@ steps:
 
   - read: project_name
     prompt: 'Enter project name:'
-    default:
-      from: path.rootdir
 
   - read: project_description
     prompt: 'Enter project description:'

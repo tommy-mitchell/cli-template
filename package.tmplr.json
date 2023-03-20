@@ -8,7 +8,7 @@
 		"command line"
 	],
 	"license": "MIT",
-	"repository": "tommy-mitchell/{{ tmplr.project_name }}",
+	"repository": "tommy-mitchell/{{ tmplr.project_name | skip: @tommy-mitchell/ }}",
 	"author": {
 		"name": "Tommy Mitchell",
 		"url": "https://tommymitchell.io"
@@ -21,7 +21,7 @@
 		"dist"
 	],
 	"scripts": {
-		"build": "tsc",
+		"build": "tsc && chmod +x dist/cli.js",
 		"test": "listr xo tsd 'c8 ava'"
 	},
 	"dependencies": {
@@ -55,7 +55,7 @@
 	},
 	"xo": {
 		"rules": {
-			"quotes": [
+			"@typescript-eslint/quotes": [
 				"error",
 				"double"
 			],
@@ -66,7 +66,7 @@
 					"avoidExplicitReturnArrows": false
 				}
 			],
-			"keyword-spacing": [
+			"@typescript-eslint/keyword-spacing": [
 				"error",
 				{
 					"overrides": {
