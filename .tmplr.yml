@@ -8,6 +8,7 @@ steps:
 
   - read: project_name
     prompt: 'Enter project name:'
+    default: filesystem.rootdir
 
   - read: project_description
     prompt: 'Enter project description:'
