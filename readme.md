@@ -9,4 +9,4 @@ npx tmplr tommy-mitchell/cli-template
 yarn install
 ```
 
-Run inside of desired installation directory.
+Run inside of desired installation directory. Requires `tmplr` v0.2.3 or higher.

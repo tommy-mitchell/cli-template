@@ -54,17 +54,10 @@ steps:
 
   # setup project
 
-  - update: src/cli.ts
-  - update: test/test.ts
-
-  - copy: package.tmplr.json
-    to: package.json
-
-  - copy: readme.tmplr.md
-    to: readme.md
+  - copy: ./template/**/*.*
+    to: ./
 
   # finish
 
+  - remove: ./template/**/*.*
   - remove: .tmplr.yml
-  - remove: package.tmplr.json
-  - remove: readme.tmplr.md

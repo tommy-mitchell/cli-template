@@ -1,0 +1,60 @@
+{
+	"name": "{{ tmplr.project_name }}",
+	"version": "0.0.0",
+	"description": "{{ tmplr.project_description }}",
+	"keywords": [
+		"cli",
+		"cli-app",
+		"command line"
+	],
+	"license": "MIT",
+	"repository": "tommy-mitchell/{{ tmplr.project_name | skip: @tommy-mitchell/ }}",
+	"author": {
+		"name": "Tommy Mitchell",
+		"url": "https://tommymitchell.io"
+	},
+	"type": "module",
+	"bin": {
+		"{{ tmplr.command_name }}": "dist/cli.js"
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"prepublishOnly": "npm run build",
+		"build": "tsc && chmodx --package",
+		"postbuild": "replace-in-files dist/cli.js --string='#!/usr/bin/env tsx' --replacement='#!/usr/bin/env node'",
+		"test": "listr xo 'c8 ava'"
+	},
+	"dependencies": {
+		"meow": "^12.0.1"
+	},
+	"devDependencies": {
+		"@johnowennixon/chmodx": "1.1.0",
+		"@tommy-mitchell/tsconfig": "^1.0.0",
+		"@types/node": "^16",
+		"ava": "^5.3.1",
+		"c8": "^8.0.0",
+		"execa": "^7.1.1",
+		"get-bin-path": "^10.0.0",
+		"listr-cli": "^0.3.0",
+		"replace-in-files-cli": "^2.2.0",
+		"tsx": "^3.12.7",
+		"typescript": "~5.1.6",
+		"xo": "^0.54.2"
+	},
+	"engines": {
+		"node": ">=16"
+	},
+	"ava": {
+		"files": [
+			"test/*.ts"
+		],
+		"extensions": {
+			"ts": "module"
+		},
+		"nodeArguments": [
+			"--loader=tsx"
+		]
+	}
+}

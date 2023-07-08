@@ -16,21 +16,19 @@
 ```
 </details>
 
-*Uses top-level await. Requires Node 14.8 or higher.*
-
 ## Usage
 
 ```sh
 $ {{ tmplr.command_name }}
 
   Usage
-    $ {{ tmplr.command_name }}
+    $ {{ tmplr.command_name }} […]
 
   Options
 
 
   Examples
-
+    $ {{ tmplr.command_name }}
 ```
 
 ## Related
