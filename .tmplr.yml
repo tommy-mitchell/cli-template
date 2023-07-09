@@ -53,11 +53,25 @@ steps:
         eval: 'yarn add {{ project_name }}'
 
   # setup project
+  # make sure to copy "hidden"/dot files (loreanvictor/tmplr#14)
 
-  - copy: ./template/**/*.*
+  - copy: ./template/**/*
+    to: ./
+
+  - copy: ./template/**/.**/**/*
+    to: ./
+
+  - copy: ./template/**/.*
+    to: ./
+
+  - copy: ./template/**/.**/**/.*
     to: ./
 
   # finish
 
-  - remove: ./template/**/*.*
+  - remove: ./template/**/*
+  - remove: ./template/**/.**/**/*
+  - remove: ./template/**/.*
+  - remove: ./template/**/.**/**/.*
+
   - remove: .tmplr.yml
