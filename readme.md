@@ -9,4 +9,4 @@ npx tmplr tommy-mitchell/cli-template
 yarn install
 ```
 
-Run inside of desired installation directory. Requires `tmplr` v0.2.3 or higher.
+Run inside of desired installation directory, then add `test/tsconfig.json` to git exclude. Requires `tmplr` v0.2.3 or higher.

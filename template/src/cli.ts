@@ -20,8 +20,7 @@ const cli = meow(`
 	}
 });
 
-const {input} = cli;
-const {help: helpShortFlag} = cli.flags;
+const { input, flags: { help: helpShortFlag } } = cli;
 
 if(input.length === 0 || helpShortFlag) {
 	cli.showHelp(0);
