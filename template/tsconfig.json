@@ -1,0 +1,9 @@
+{
+	"extends": "@tommy-mitchell/tsconfig",
+	"exclude": ["node_modules", "coverage", "dist"],
+	"include": ["src"],
+	"compilerOptions": {
+		"outDir": "dist",
+		"declaration": false
+	},
+}

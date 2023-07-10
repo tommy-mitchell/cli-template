@@ -8,6 +8,8 @@ steps:
 
   - read: project_name
     prompt: 'Enter project name:'
+    default:
+      from: filesystem.rootdir
 
   - read: project_description
     prompt: 'Enter project description:'
@@ -30,7 +32,7 @@ steps:
       eval: '{{ install_type | matches: dev }}'
     steps:
       - read: install_node
-        eval: 'node install --save-dev {{ project_name }}'
+        eval: 'npm install --save-dev {{ project_name }}'
       - read: install_yarn
         eval: 'yarn add --dev {{ project_name }}'
 
@@ -38,7 +40,7 @@ steps:
       eval: '{{ install_type | matches: global }}'
     steps:
       - read: install_node
-        eval: 'node install --global {{ project_name }}'
+        eval: 'npm install --global {{ project_name }}'
       - read: install_yarn
         eval: 'yarn global add {{ project_name }}'
 
@@ -46,23 +48,36 @@ steps:
       eval: '{{ install_type | matches: dep }}'
     steps:
       - read: install_node
-        eval: 'node install {{ project_name }}'
+        eval: 'npm install {{ project_name }}'
       - read: install_yarn
         eval: 'yarn add {{ project_name }}'
 
   # setup project
+  # make sure to copy "hidden"/dot files (loreanvictor/tmplr#14)
 
-  - update: src/cli.ts
-  - update: test/test.ts
+  - copy: ./template/**/*
+    to: ./
 
-  - copy: package.tmplr.json
-    to: package.json
+  - copy: ./template/**/.**/**/*
+    to: ./
 
-  - copy: readme.tmplr.md
-    to: readme.md
+  - copy: ./template/**/.*
+    to: ./
+
+  - copy: ./template/**/.**/**/.*
+    to: ./
 
   # finish
+  # temporaryily specify folders to remove (loreanvictor/tmplr#15)
+
+  - remove: ./template/**/*
+  - remove: ./template/**/.**/**/*
+  - remove: ./template/**/.*
+  - remove: ./template/**/.**/**/.*
+
+  - remove: ./template/.github
+  - remove: ./template/src
+  - remove: ./template/test
+  - remove: ./template
 
   - remove: .tmplr.yml
-  - remove: package.tmplr.json
-  - remove: readme.tmplr.md
