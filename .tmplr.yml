@@ -32,7 +32,7 @@ steps:
       eval: '{{ install_type | matches: dev }}'
     steps:
       - read: install_node
-        eval: 'node install --save-dev {{ project_name }}'
+        eval: 'npm install --save-dev {{ project_name }}'
       - read: install_yarn
         eval: 'yarn add --dev {{ project_name }}'
 
@@ -40,7 +40,7 @@ steps:
       eval: '{{ install_type | matches: global }}'
     steps:
       - read: install_node
-        eval: 'node install --global {{ project_name }}'
+        eval: 'npm install --global {{ project_name }}'
       - read: install_yarn
         eval: 'yarn global add {{ project_name }}'
 
@@ -48,7 +48,7 @@ steps:
       eval: '{{ install_type | matches: dep }}'
     steps:
       - read: install_node
-        eval: 'node install {{ project_name }}'
+        eval: 'npm install {{ project_name }}'
       - read: install_yarn
         eval: 'yarn add {{ project_name }}'
 
@@ -68,10 +68,16 @@ steps:
     to: ./
 
   # finish
+  # temporaryily specify folders to remove (loreanvictor/tmplr#15)
 
   - remove: ./template/**/*
   - remove: ./template/**/.**/**/*
   - remove: ./template/**/.*
   - remove: ./template/**/.**/**/.*
+
+  - remove: ./template/.github
+  - remove: ./template/src
+  - remove: ./template/test
+  - remove: ./template
 
   - remove: .tmplr.yml
