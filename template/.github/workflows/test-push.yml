@@ -1,7 +1,9 @@
-name: CI
+# https://github.com/orgs/community/discussions/26276#discussioncomment-3251141
+name: CI Test
 on:
-  - push
-  - pull_request
+  push:
+    branches:
+      - main
 jobs:
   test:
     name: Node.js ${{ matrix.node-version }}
@@ -16,4 +18,4 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm install
-      - run: npm run ci
+      - run: npm test

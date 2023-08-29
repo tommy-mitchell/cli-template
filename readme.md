@@ -5,8 +5,9 @@ Personal [`tmplr`](https://github.com/loreanvictor/tmplr) template for creating 
 ## Usage
 
 ```sh
-npx tmplr tommy-mitchell/cli-template
+git init
+npx tmplr@latest 'tommy-mitchell/cli-template#v0.2.0'
 yarn install
 ```
 
-Run inside of desired installation directory, then add `test/tsconfig.json` to git exclude. Requires `tmplr` v0.2.4 or higher.
+Run inside of desired installation directory. Requires `tmplr` v0.2.4 or higher.

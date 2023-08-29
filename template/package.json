@@ -20,42 +20,50 @@
 	"files": [
 		"dist"
 	],
-	"scripts": {
-		"prepublishOnly": "npm run build",
-		"build": "tsc && chmodx --package",
-		"postbuild": "replace-in-files dist/cli.js --string='#!/usr/bin/env tsx' --replacement='#!/usr/bin/env node'",
-		"test": "listr xo 'c8 ava'"
-	},
-	"dependencies": {
-		"meow": "^12.0.1"
-	},
-	"devDependencies": {
-		"@johnowennixon/chmodx": "1.1.0",
-		"@tommy-mitchell/tsconfig": "^1.0.0",
-		"@types/node": "^16",
-		"ava": "^5.3.1",
-		"c8": "^8.0.0",
-		"execa": "^7.1.1",
-		"get-bin-path": "^10.0.0",
-		"is-executable": "^2.0.1",
-		"listr-cli": "^0.3.0",
-		"replace-in-files-cli": "^2.2.0",
-		"tsx": "^3.12.7",
-		"typescript": "~5.1.6",
-		"xo": "^0.54.2"
-	},
 	"engines": {
-		"node": ">=16"
+		"node": ">=16.9"
+	},
+	"scripts": {
+		"prepare": "npm run build",
+		"build": "tsc -p tsconfig.build.json && execify --all",
+		"lint": "xo",
+		"test": "tsc --noEmit && c8 npm run ava",
+		"ava": "cross-env NODE_OPTIONS='--loader=tsx --no-warnings=ExperimentalWarning' ava"
 	},
 	"ava": {
 		"files": [
-			"test/*.ts"
+			"test/**/*.ts",
+			"!test/_*"
 		],
+		"snapshotDir": "test/_snapshots",
 		"extensions": {
 			"ts": "module"
 		},
+		"environmentVariables": {
+			"concurrency": "5"
+		},
 		"nodeArguments": [
-			"--loader=tsx"
+			"--loader=tsx",
+			"--no-warnings=ExperimentalWarning"
 		]
+	},
+	"dependencies": {
+		"meow": "^12.1.1"
+	},
+	"devDependencies": {
+		"@shopify/semaphore": "^3.0.2",
+		"@tommy-mitchell/tsconfig": "^1.1.0",
+		"@types/node": "^16.9",
+		"ava": "^5.3.1",
+		"c8": "^8.0.1",
+		"cross-env": "^7.0.3",
+		"execify-cli": "beta",
+		"execa": "^7.1.1",
+		"get-bin-path": "^10.0.0",
+		"is-executable": "^2.0.1",
+		"tsx": "^3.12.7",
+		"type-fest": "^4.3.1",
+		"typescript": "~5.2.2",
+		"xo": "^0.56.0"
 	}
 }

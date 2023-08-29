@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env tsx
 import process from "node:process";
 import meow from "meow";
 
@@ -14,10 +14,12 @@ const cli = meow(`
 `, {
 	importMeta: import.meta,
 	description: false,
-	help: {
-		type: "boolean",
-		shortFlag: "h",
-	}
+	flags: {
+		help: {
+			type: "boolean",
+			shortFlag: "h",
+		},
+	},
 });
 
 const { input, flags: { help: helpShortFlag } } = cli;

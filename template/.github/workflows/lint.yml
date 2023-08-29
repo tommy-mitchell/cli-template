@@ -1,0 +1,16 @@
+# https://github.com/orgs/community/discussions/26276#discussioncomment-3251141
+name: CI Lint
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - run: npm install
+      - run: npm run lint

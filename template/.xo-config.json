@@ -1,17 +1,24 @@
 {
 	"rules": {
 		"arrow-parens": "off",
-		"quotes": "off",
-		"@typescript-eslint/quotes": ["error", "double"],
-		"object-curly-spacing": "off",
-	    "@typescript-eslint/object-curly-spacing": ["error", "always"],
-		"@typescript-eslint/no-confusing-void-expression": ["error", { "ignoreArrowShorthand": true }],
+		"quotes": ["error", "double"],
+		"object-curly-spacing": ["error", "always"],
 		"object-shorthand": ["error", "always", { "avoidExplicitReturnArrows": false }],
-		"@typescript-eslint/keyword-spacing": ["error", { "overrides": {
-			"if": { "after": false },
-			"for": {"after": false },
-			"while": {"after": false },
-			"catch": {"after": false }
-		}}]
-	}
+		"unicorn/prefer-regexp-test": "off",
+		"unicorn/no-process-exit": "off"
+	},
+	"overrides": [
+		{
+			"files": "**/*.{ts,cts,mts,tsx}",
+			"rules": {
+				"quotes": "off",
+				"object-curly-spacing": "off",
+				"@typescript-eslint/quotes": ["error", "double"],
+				"@typescript-eslint/object-curly-spacing": ["error", "always"],
+				"@typescript-eslint/no-confusing-void-expression": ["error", { "ignoreArrowShorthand": true }],
+				"n/file-extension-in-import": ["error", "always", { ".ts": "always" }],
+				"@typescript-eslint/prefer-regexp-exec": "off"
+			}
+		}
+	]
 }
