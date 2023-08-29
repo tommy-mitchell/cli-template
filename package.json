@@ -1,7 +1,7 @@
 {
 	"private": true,
 	"name": "@tommy-mitchell/cli-template",
-	"version": "0.2.0",
+	"version": "0.3.0",
 	"description": "Personal `tmplr` template for creating CLIs.",
 	"license": "MIT",
 	"repository": "tommy-mitchell/cli-template",
