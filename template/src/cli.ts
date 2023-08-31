@@ -1,5 +1,4 @@
 #!/usr/bin/env tsx
-import process from "node:process";
 import meow from "meow";
 
 const cli = meow(`
@@ -7,7 +6,7 @@ const cli = meow(`
 	  $ {{ tmplr.command_name }} […]
 
 	Options
-
+	  --help, -h  Show this help message
 
 	Examples
 	  $ {{ tmplr.command_name }}
@@ -24,6 +23,6 @@ const cli = meow(`
 
 const { input, flags: { help: helpShortFlag } } = cli;
 
-if(input.length === 0 || helpShortFlag) {
+if (input.length === 0 || helpShortFlag) {
 	cli.showHelp(0);
 }

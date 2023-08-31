@@ -1,0 +1,14 @@
+{
+	"xo.enable": true,
+	"xo.format.enable": true,
+	"xo.overrideSeverity": "warn",
+	"xo.debounce": 100,
+	"[javascript]": {
+        "editor.formatOnSave": true,
+		"editor.defaultFormatter": "samverschueren.linter-xo"
+	},
+	"[typescript]": {
+        "editor.formatOnSave": true,
+		"editor.defaultFormatter": "samverschueren.linter-xo"
+	}
+}

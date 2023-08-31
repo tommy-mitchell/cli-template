@@ -4,6 +4,7 @@ import { Semaphore, type Permit } from "@shopify/semaphore";
 import { execa } from "execa";
 import { getBinPath } from "get-bin-path";
 import { isExecutable } from "is-executable";
+import { atFixture } from "./_utils.js";
 
 const test = anyTest as TestFn<{
 	binPath: string;

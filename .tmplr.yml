@@ -26,6 +26,18 @@ steps:
       - 'global'
       - 'dep'
 
+  - read: include_dot_vscode
+    prompt: 'Include .vscode folder?'
+    choices:
+      - 'Yes'
+      - 'No'
+
+  - read: include_test_fixtures
+    prompt: 'Include test fixtures?'
+    choices:
+      - 'Yes'
+      - 'No'
+
   # get computed variables
 
   - if:
@@ -53,31 +65,41 @@ steps:
         eval: 'yarn add {{ project_name }}'
 
   # setup project
-  # make sure to copy "hidden"/dot files (loreanvictor/tmplr#14)
+
+  - if:
+      eval: '{{ include_dot_vscode | matches: No }}'
+    steps:
+      - remove: ./template/.vscode
+
+  - if:
+      eval: '{{ include_test_fixtures | matches: Yes }}'
+    steps:
+      - copy: ./template/test-fixtures/**/*
+        to: ./test
+        include hidden: true
+      - remove: ./template/test-fixtures
+      - remove: ./template/test
+    else:
+      steps:
+        - copy: ./template/test/**/*
+          to: ./test
+          include hidden: true
+        - remove: ./template/test
+        - remove: ./template/test-fixtures
 
   - copy: ./template/**/*
     to: ./
-
-  - copy: ./template/**/.**/**/*
-    to: ./
-
-  - copy: ./template/**/.*
-    to: ./
-
-  - copy: ./template/**/.**/**/.*
-    to: ./
+    include hidden: true
 
   # finish
-  # temporaryily specify folders to remove (loreanvictor/tmplr#15)
 
   - remove: ./template/**/*
-  - remove: ./template/**/.**/**/*
-  - remove: ./template/**/.*
-  - remove: ./template/**/.**/**/.*
+    include hidden: true
 
+  # temporarily specify folders to remove (loreanvictor/tmplr#15)
   - remove: ./template/.github
+  - remove: ./template/.vscode
   - remove: ./template/src
-  - remove: ./template/test
   - remove: ./template
 
   - remove: .tmplr.yml

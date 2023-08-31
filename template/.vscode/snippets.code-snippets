@@ -1,0 +1,8 @@
+{
+	"test.todo": {
+		"scope": "typescript",
+		"prefix": "todo",
+		"description": "Create an AVA todo test",
+		"body": "test.todo(\"$1\");",
+	}
+}

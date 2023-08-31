@@ -5,7 +5,7 @@
 	"keywords": [
 		"cli",
 		"cli-app",
-		"command line"
+		"command-line"
 	],
 	"license": "MIT",
 	"repository": "tommy-mitchell/{{ tmplr.project_name | skip: @tommy-mitchell/ }}",
@@ -35,7 +35,6 @@
 			"test/**/*.ts",
 			"!test/_*"
 		],
-		"snapshotDir": "test/_snapshots",
 		"extensions": {
 			"ts": "module"
 		},
