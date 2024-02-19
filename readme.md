@@ -6,8 +6,9 @@ Personal [`tmplr`](https://github.com/loreanvictor/tmplr) template for creating 
 
 ```sh
 git init
-npx tmplr@latest 'tommy-mitchell/cli-template#v0.4.0'
+npx tmplr@latest 'tommy-mitchell/cli-template#v0.5.0'
 yarn install
+npx dprint config update
 ```
 
 Run inside of desired installation directory.
