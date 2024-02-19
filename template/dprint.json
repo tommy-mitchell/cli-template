@@ -1,0 +1,9 @@
+{
+	"includes": ["**/*.{js,ts,md,json,jsonc}"],
+	"extends": ["node_modules/@tommy-mitchell/dprint-config/index.json"],
+	"plugins": [
+		"https://plugins.dprint.dev/json-0.19.1.wasm",
+		"https://plugins.dprint.dev/markdown-0.16.3.wasm",
+		"https://plugins.dprint.dev/typescript-0.89.1.wasm"
+	]
+}

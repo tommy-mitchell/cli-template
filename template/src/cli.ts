@@ -1,4 +1,4 @@
-#!/usr/bin/env tsx
+#!/usr/bin/env tsimp
 import meow from "meow";
 
 const cli = meow(`

@@ -14,6 +14,7 @@
 ```sh
 {{ tmplr.install_yarn }}
 ```
+
 </details>
 
 ## Usage
@@ -25,7 +26,7 @@ $ {{ tmplr.command_name }} --help
     $ {{ tmplr.command_name }} […]
 
   Options
-	--help, -h  Show this help message
+    --help, -h  Show this help message
 
   Examples
     $ {{ tmplr.command_name }}

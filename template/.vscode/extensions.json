@@ -1,7 +1,8 @@
 {
-    "recommendations": [
-        "sculpt0r.vsc-ava-test-runner",
-        "samverschueren.linter-xo",
-        "dbaeumer.vscode-eslint"
-    ]
+	"recommendations": [
+		"sculpt0r.vsc-ava-test-runner",
+		"samverschueren.linter-xo",
+		"dbaeumer.vscode-eslint",
+		"dprint.dprint"
+	]
 }

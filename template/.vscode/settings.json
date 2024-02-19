@@ -3,12 +3,8 @@
 	"xo.format.enable": true,
 	"xo.overrideSeverity": "warn",
 	"xo.debounce": 100,
-	"[javascript]": {
-        "editor.formatOnSave": true,
-		"editor.defaultFormatter": "samverschueren.linter-xo"
+	"[javascript][typescript][markdown][json][jsonc]": {
+		"editor.formatOnSave": true,
+		"editor.defaultFormatter": "dprint.dprint"
 	},
-	"[typescript]": {
-        "editor.formatOnSave": true,
-		"editor.defaultFormatter": "samverschueren.linter-xo"
-	}
 }
