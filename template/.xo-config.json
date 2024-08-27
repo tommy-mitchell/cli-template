@@ -1,3 +1,7 @@
 {
-	"extends": ["@tommy-mitchell/xo"]
+	"$schema": "https://json.schemastore.org/eslintrc.json",
+	"extends": ["@tommy-mitchell/xo", "@tommy-mitchell/xo/dprint"],
+	"rules": {
+		"unicorn/no-process-exit": "off"
+	}
 }

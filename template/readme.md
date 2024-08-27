@@ -10,11 +10,13 @@
 
 <details>
 <summary>Other Package Managers</summary>
+<p>
 
 ```sh
 {{ tmplr.install_yarn }}
 ```
 
+</p>
 </details>
 
 ## Usage

@@ -1,6 +1,7 @@
 #!/usr/bin/env tsimp
 import meow from "meow";
 
+// dprint-ignore
 const cli = meow(`
 	Usage
 	  $ {{ tmplr.command_name }} […]
@@ -21,8 +22,8 @@ const cli = meow(`
 	},
 });
 
-const { input, flags: { help: helpShortFlag } } = cli;
+const { input } = cli;
 
-if (input.length === 0 || helpShortFlag) {
+if (input.length === 0) {
 	cli.showHelp(0);
 }

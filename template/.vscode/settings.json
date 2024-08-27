@@ -3,8 +3,11 @@
 	"xo.format.enable": true,
 	"xo.overrideSeverity": "warn",
 	"xo.debounce": 100,
-	"[javascript][typescript][markdown][json][jsonc]": {
+	"[javascript][javascriptreact][typescript][typescriptreact][json][jsonc][yaml]": {
 		"editor.formatOnSave": true,
-		"editor.defaultFormatter": "dprint.dprint"
+		"editor.defaultFormatter": "dprint.dprint",
+		"editor.codeActionsOnSave": {
+			"source.fixAll": "explicit",
+		},
 	},
 }

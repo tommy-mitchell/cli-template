@@ -1,9 +1,7 @@
-# https://github.com/orgs/community/discussions/26276#discussioncomment-3251141
 name: CI Lint
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   pull_request:
 jobs:
   lint:
